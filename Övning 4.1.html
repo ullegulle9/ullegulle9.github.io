@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+    <meta charset="utf-8">
+    <head>
+        <title>Övning 4.1</title>
+        <style>
+            div {border: 2px solid black;
+                font-family: Helvetica;
+                text-align: center;
+            }
+            .Nummer1 {background-color: aqua; width: 100px;
+                padding: 10px 20px 30px 40px;
+                
+            }
+            #Nummer2 {  color: green;
+                        background-color: Yellow;
+                        height: 75px; 
+                        width: 76px;
+                        float: right;
+                        font-family: Impact;
+                margin: 30px;
+                content: 30px;
+            }
+            div:nth-child(3) {background-color: red;
+            position: fixed;
+            padding: 40px;
+            left: 30px;
+            font-size: 50px;}
+            div:hover { background-color: orange;
+                        }
+            div:nth-child(4) {background-color: grey;
+            position: absolute;
+            padding: 40px;
+            left: 150px;
+            float: right;
+            border: 8px dotted black;}
+            
+            div:nth-child(5) {border: 8px double purple;
+                width: 100px;
+                    height: 150px;
+                background-color: black; color: coral;
+            position: relative; left: 50px; top: 200px; padding: 60px;
+            }
+            div > div {background-color: crimson; border: 1px dashed lightgreen;
+            height: 50px; width: 50px;
+            position: absolute; left: 50px; top: 59px; padding-top: 25px; }
+        </style>
+    </head>
+    <body>
+        <div class="Nummer1">1</div>
+        <div id="Nummer2">2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>
+            <div>6</div>5</div>
+    
+    </body>
+</html>
