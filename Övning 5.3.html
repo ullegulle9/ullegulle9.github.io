@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Övning 5.2</title>
+        <style> 
+            a   {border: 3px solid black;
+                text-decoration: none;
+                color: black;
+                font-family: Impact;
+                padding: 3px;
+                background-color: darkgoldenrod;
+                border-radius: 5px;}
+            h1  {font-family: Impact;
+                font-size: 30px;
+                 }
+        
+        </style>
+    </head>
+    <body>
+        <h1>SOCIALA MEDIER - Köp reklamplats redan idag</h1>
+        <nav>
+            <ul>
+                <li><a href="https://www.youtube.com/">Youtube</a></li><br>
+                <li><a href="https://twitter.com/">Twitter</a></li><br>
+                <li><a href="https://www.facebook.com/">Facebook</a></li><br>
+            </ul>
+        </nav>
+        <br>
+        
+        <h3>Val av hemsida:</h3>
+        <input type="radio" name="rad" id="rad1"/> <label for="rad1">Youtube</label> <br>
+<input type="radio" name="rad" id="rad2"/> <label for="rad2">Twitter</label> <br>
+<input type="radio" name="rad" id="rad3"/> <label for="rad3">Facebook</label> <br> <br>
+        
+        <p>Välj bakgrundsfärg:</p>
+        <input type="color"><br>
+        <p>Ladda upp din annons:</p>
+        <input type="file"><br><br>
+        <h3>Betalning</h3>
+        <p>Korttyp (Välj i listan)</p>
+        <datalist id="mylist">
+	<option>MasterCard</option>
+	<option>VISA</option>
+	<option>American Express</option>
+</datalist>
+<input type="text" list="mylist" />
+        <p>Kortnummer</p>
+        <input type="text" placeholder="xxxx - xxxx - xxxx - xxxx" /><br>
+        <p>Sista giltighetsdatum (månad - år)</p>
+        <input type="month"><br>
+        <p>Kortinnehavare</p>
+        <input type="text"><br>
+        <p>Säkerhetskod</p>
+        <input type="password"><br>
+        <p>Övriga kommentarer eller meddelanden till hemsidan:</p>
+        <textarea rows="4" cols="50"></textarea><br><br>
+        <button type="button" onclick="alert('Tack för ditt köp!')">Slutför betalningen</button>
+ 
+    </body>
+
+
+
+
+
+</html>
