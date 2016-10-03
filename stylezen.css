@@ -1,0 +1,155 @@
+/* css Zen Garden default style v1.02 */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+
+/* This file based on 'Tranquille' by Dave Shea */
+/* You may use this file as a foundation for any new work, but you may find it easier to start from scratch. */
+/* Not all elements are defined in this file, so you'll most likely want to refer to the xhtml as well. */
+
+/* Your images should be linked as if the CSS file sits in the same folder as the images. ie. no paths. */
+
+
+/* basic elements */
+.page-wrapper {
+   margin-top: 0px;
+    display: inline-block;
+    background: url(http://csswizardry.com/logo.png) no-repeat 20px 252px;
+    
+    
+}
+.main-supporting {
+    display: inline-flex;
+}
+#css-zen-garden {
+    background-image: url(http://www.qqxxzx.com/images/background-pattern/background-pattern-1.jpg); 
+}
+header h1 {
+    font-family: Impact;
+    text-align: center;
+    font-size: 60px;
+    border: 5px solid black;
+    border-radius: 5px;
+    background-image: url(http://feelgrafix.com/data/background/background-18.jpg);
+    text-shadow: 1px 1px white;
+    padding: 35px;
+    margin-left: 20px;
+    margin-right: 20px;
+    
+}
+#zen-intro h2 {
+     font-family: Arial Narrow, Arial;
+    font-size: 30px;
+    text-align: center;
+    padding: 15px;
+    text-shadow: 0 0 3px crimson;
+    background: rgba(265, 265, 265, 0.3);
+    border: 3px double black;
+    min-width: 150px;
+    width: 300px;
+    margin: auto;
+}
+.summary {
+     font-family: Arial Narrow, Arial;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px;
+    text-shadow: 0 0 3px crimson;
+    margin: auto;
+    background: rgba(265, 265, 265, 0.3);
+    min-width: 150px;
+    width: 300px;
+}
+
+.preamble {
+   font-family: Arial Narrow, Arial;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px;
+    text-shadow: 0 0 3px crimson;
+    margin: 50px;
+    background: rgba(265, 265, 265, 0.3);
+    border: 1px solid black;
+    position: relative;
+    clear: both;
+    
+}
+#zen-supporting > div {
+    font-family: Arial Narrow, Arial;
+    font-size: 20px;
+    text-align: center;
+    padding: 15px;
+    text-shadow: 0 0 3px crimson;
+    margin: 50px;
+    background: rgba(265, 265, 265, 0.3);
+    border: 1px solid black;
+    
+}
+
+/* SIDEBAR */
+.sidebar {
+    background: rgba(255, 51, 119, 0.8);
+    font-family: monospace;
+    border-radius: 10px;
+    position: absolute;
+    right: 25px;
+    top: 255px;
+    padding: 5px;
+    margin: 5px;
+    font-size: 11px;
+    width: 330px;
+    height: 330px;
+    color: white;
+}
+.sidebar a {
+    color: white;
+}
+
+@media (max-width: 1100px) {
+    .sidebar { 
+        width: 200px;
+        height: 380px;
+    }
+    .page-wrapper {
+        background: transparent;
+    }
+}
+@media (max-width: 850px) {
+    .sidebar { 
+        background: rgba(255, 51, 119, 0.8);
+        font-family: monospace;
+        border-radius: 10px;
+        position: static;
+        padding: 5px;
+        margin: 50px;
+        font-size: 11px;
+        width: 330px;
+        height: 330px;
+        color: white;
+    }
+    
+}
+
+/* FOOTER */
+footer {
+    background-color: black;
+    text-align: center;
+    color: white;
+    font-family: monospace;
+    height: 35px;
+    padding: 10px;
+    font-size: 22px;
+    position: static;
+    right: 0;
+    bottom: -20;
+    left: 0;
+}
+footer > a {
+    color: white;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+a:hover {
+    color: crimson;
+    text-emphasis: 
+}
