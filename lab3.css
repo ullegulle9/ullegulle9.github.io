@@ -1,0 +1,150 @@
+body {
+  background-color: lightgray;
+}
+
+body > .container {
+    margin: auto;
+    width: 520px;
+    background-color: darkgray;
+}
+
+h1 {
+    font-family: Impact;
+    text-align: center;
+    margin: 15px;
+    padding: 15px;
+    color: azure;
+     text-shadow:
+    0 1px 0px #378ab4,
+    1px 0 0px #5dabcd,
+    1px 2px 1px #378ab4,
+    2px 1px 1px #5dabcd,
+    2px 3px 2px #378ab4,
+    3px 2px 2px #5dabcd,
+    3px 4px 2px #378ab4,
+    4px 3px 3px #5dabcd,
+    4px 5px 3px #378ab4,
+    5px 4px 2px #5dabcd,
+    5px 6px 2px #378ab4,
+    6px 5px 2px #5dabcd,
+    6px 7px 1px #378ab4,
+    7px 6px 1px #5dabcd,
+    7px 8px 0px #378ab4,
+    8px 7px 0px #5dabcd;
+}
+
+#log{
+    border-width: 2px;
+    border-top: black;
+    border-bottom: black;
+    width: 500px;
+    margin: 5px;
+    padding: 5px;
+    background-color: azure;
+    font-family: monospace;
+}
+
+#menu {
+  border: 2px solid DarkSlateGray;
+  margin: 5px;
+  padding: 5px;
+  font-family: Verdana;
+  display: inline;
+  cursor: pointer;
+}
+
+#cont {
+  display: inline-flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#cont > button {
+  border: 2px solid DarkSlateGray;
+  margin: 5px;
+  padding: 2px;
+  font-family: Verdana;
+  cursor: pointer;
+}
+
+#picker {
+  border: 1px solid black;
+  background-color: black;
+  height: 20px;
+  width: 75px;
+}
+
+#canvas {
+  border: 1px solid black;
+  display: block;
+  margin: 5px;
+  background-color: black;
+}
+
+#colorCont {
+  display: none;
+}
+
+#colorPicker {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+#colorPicker > button {
+  border: 1px solid black;
+  width: 25px;
+  height: 25px;
+  margin: 2px;
+  cursor: pointer;
+}
+
+#colorPicker > #select {
+  font-family: Arial Narrow;
+  margin: 5px;
+}
+
+#white {
+  background-color: white;
+}
+
+#blue {
+  background-color: navy;
+}
+
+#crimson {
+  background-color: crimson;
+}
+
+#colorPicker > #addColor, #submitColor {
+  font-family: Arial Narrow;
+  font-size: 1.05em;
+}
+
+#colorPicker > #submitColor {
+  width: 70px;
+  height: 28px;
+  
+}
+
+#abort, #clear, #json, #export, #import {
+    border: 2px solid DarkSlateGray;
+  margin: 5px;
+  padding: 2px;
+  font-family: Verdana;
+  cursor: pointer;
+}
+
+#jsonText {
+    margin: 3px;
+    display: none;
+}
+
+#submit {
+    margin: 3px;
+}
+
+#endPol {
+    margin-left: 110px;
+    display: none;
+}

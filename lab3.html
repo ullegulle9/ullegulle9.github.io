@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title>Lab3-ML</title>
+    <script src="lab3.js"></script>
+    <link rel="stylesheet" type="text/css" href="lab3.css">
+</head>
+<body>
+
+    <div class="container">
+        <h1>DRAW4LIFE</h1>
+      <p id="log">Welcome to your favourite canvas tool on the internet!</p>
+      <button id="menu">MENU</button>
+      <br>
+      <div id="cont">
+        <button id="triangle">TRIANGLE</button>
+        <button id="circle">CIRCLE</button>
+        <button id="rectangle">RECTANGLE</button>
+        <button id="polygon">POLYGON</button>
+        <button id="color">SELECT</button>
+      </div>
+      <div id="colorCont">
+        <div id=colorPicker>
+          <span id="select">Select color:  </span>
+          <button id="white"></button>
+          <button id="blue"></button>
+          <button id="crimson"></button>
+            <input type="text" id="addColor" placeholder="Or enter HEX-code">
+          <button type="submit" id="submitColor">Get color</button>
+        </div>
+      </div>
+      <canvas id="canvas" width="500" height="370">Your browser doesn't support canvas</canvas>
+        <button id="clear">CLEAR CANVAS</button>
+        <button id="abort">ABORT FIGURE</button>
+        <button id="json">JSON</button>
+        <button id="endPol">End polygon</button>
+        <div id="eximp">
+        <button id="export">EXPORT</button>
+        <button id="import">IMPORT</button>
+        <textarea id="jsonText" rows="4" cols="70"></textarea>
+        <input id="submit" type="submit" value="">
+        </div>
+
+    </div>
+</body>
+</html>
