@@ -1,0 +1,95 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Book Database ML</title>
+    <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="inljs2.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Pacifico">
+</head>
+<body>
+    
+        
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container-fluid">
+        
+        
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#mainNavBar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a href="#" class="navbar-brand">Libre Library</a>
+            </div>
+            
+            <!-- Navbar items -->
+            
+            <div class="collapse navbar-collapse" id="mainNavBar">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="active"><a href="#">HOME</a></li>
+                    <li><a href="#">ABOUT</a></li>
+                    <li><a href="#">CONTACT</a></li>
+                    
+                </ul>
+            </div>
+            
+            
+        </div>
+    </nav>
+    <div class="container-fluid">
+        <div class="container-fluid" id="homeScreen"></div>
+        <div class="container-fluid" id="textLogo">Libre Library</div>
+        <div class="well" id="welcome">
+            <img src="roundbook.jpg" alt="book pic" class="img-circle">
+            <h1>Welcome to Libre Library</h1>
+            
+            <p>To be able to use this application you need an API key. If this is your first visit, request one by pressing the button below. Else, just get started!</p>
+            
+            <button id="reqBtn" class="btn btn-primary">Request your API key</button><br><br>
+            <div id="apiSuccess" class="alert alert-success"></div>
+            <div id="apiFail" class="alert alert-danger"></div>
+        </div>
+        
+          <div class="well" id="view">
+        
+            <h3>Your library</h3><br>
+            <button id="getLibr" class="btn btn-primary">View books</button>
+            <table class="table table-striped" id="libTable">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Title</th>
+                        <th>Author</th>
+                    </tr>
+                </thead>
+                <tbody id="bookList">        
+                </tbody>
+            </table>
+        <div class="alert alert-danger" id="errorBox"></div>
+        
+        </div>  
+        
+        
+        <div class="well">
+            <h3>Add books</h3><br>
+            <p>Choose to add a specific book by entering the book title and author, or add five books by your preferred author collected from Google books.</p>
+            <div id="success" class="alert alert-success"></div>
+            <div id="fail" class="alert alert-danger"></div>
+            <input type="text" placeholder="Author" id="bAuthor" class="form-control"><br>
+            <input type="text" placeholder="Title" id="bTitle" class="form-control">
+            <br>
+            <button id="addData" class="btn btn-primary">Add book</button>
+            <button id="googleBtn" class="btn btn-primary">Add books from Google Books</button>
+            
+        </div>
+        
+
+
+
+        <script src="inljs2.js"></script>
+    </div>
+</body>
+</html>
