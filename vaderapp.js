@@ -4,7 +4,6 @@ let title;
 let humidity;
 let wind;
 let wType;
-
 let url;  
 let rain = document.getElementById('rain');
 let about = document.getElementById('about');
@@ -14,6 +13,29 @@ let wIcon = document.getElementById('wIcon');
 let iconImg = document.getElementById('iconImage');
 let resCont = document.getElementById('resCont');
     
+smoothScroll.init();
+
+function capitalize(string) {
+	let lowC = string.toLowerCase();
+	let x = lowC.charAt(0);
+	let newString = '';
+	let isSpace = true;
+	for (x = 0; x < lowC.length; x++){
+		let letter = lowC.charAt(x);
+		if (isSpace){
+			newString += letter.toUpperCase();
+			isSpace = false;
+		}
+		else {
+			newString += letter;
+		}
+		if (letter == ' '){
+			isSpace = true;
+		}
+	}
+	return newString;
+}
+
 function getWeatherUpdate(){
         let cityName = inputField.value;
         let url = "api.openweathermap.org/data/2.5/weather";
@@ -24,7 +46,7 @@ function getWeatherUpdate(){
             if(req.readyState == 4 && req.status == 200){
                 let data = JSON.parse(req.responseText);
                 temp = data.main.temp;
-                wType = data.weather[0].description;
+                wType = capitalize(data.weather[0].description);
                 title = data.name + ", " + data.sys.country;
                 humidity = data.main.humidity;
                 wind = data.wind.speed;

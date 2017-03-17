@@ -1,0 +1,30 @@
+body {
+    background-color: darkcyan;
+    display: flex;
+    align-content: center;
+    padding: 20px;
+}
+
+.box {
+    
+    width: 200px;
+    border: 2px solid crimson;
+    background: gray;
+    
+    text-align: center;
+    font-family: monospace;
+    font-size: 22px;
+    padding: 20px;
+}
+
+#log {
+    position: absolute;
+    left: 700px;
+    display: none;
+    top: 150px;
+}
+
+#highScore {
+    position: absolute;
+    left: 700px;
+}
