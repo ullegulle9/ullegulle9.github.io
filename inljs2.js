@@ -24,16 +24,17 @@ window.onload = function () {
     let googleKey = 'AIzaSyCzu8UBYkafWG1BaUwyKpOOmyRv4PdRGMc';
     let goglBtn = document.getElementById('googleBtn');
 
-
+    let apiKey;
     let tdEdit = document.getElementsByClassName('editBtn');
     let tdDelete = document.getElementsByClassName('deleteBtn');
 
-   if (localStorage.getItem("apiKey") === null){
-       let apiKey;
+   if (localStorage.getItem("apiKey") !== null){
+      
+       apiKey = localStorage.getItem("apiKey");
+       
+       
    }
-    else {
-        let apiKey = localStorage.getItem("apiKey");
-    }
+
 
 
 
@@ -65,6 +66,11 @@ window.onload = function () {
     })
 
     function addBooksToDB(titl, auth) {
+        if (apiKey === null){
+            showErrorBox();
+            console.log('händer');
+        }
+        
         title = titl;
         author = auth;
         //console.log(title);
@@ -88,6 +94,7 @@ window.onload = function () {
         }
         addReq.open('GET', url);
         addReq.send();
+         
     }
 
     function getGoogleBooks() {
@@ -120,7 +127,9 @@ window.onload = function () {
     viewLib.addEventListener('click', viewBooks);
 
     function viewBooks(e) {
-        
+        if (apiKey === null){
+            showErrorBox();
+        }
         let url = 'https://www.forverkliga.se/JavaScript/api/crud.php?op=select&key=' + apiKey;
         let viewReq = new XMLHttpRequest;
 
@@ -246,9 +255,16 @@ window.onload = function () {
 
     function showErrorBox() {
         errorBx.style.display = 'block';
-        let html = `Something went wrong. <br>
+        if (apiKey === null){
+            let html = `You don't seem to have an API Key. <br>
+                                Please request one and try again.
+<span class="top-right" id="closeBox">Close(X)</span>`;
+        } else {
+            let html = `Something went wrong. <br>
                                 Please try again.
 <span class="top-right" id="closeBox">Close(X)</span>`;
+        }
+        
         errorBx.innerHTML = html;
         let close = document.getElementById('closeBox');
         close.addEventListener('click', function (e) {
