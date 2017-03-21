@@ -28,12 +28,13 @@ window.onload = function () {
     let tdEdit = document.getElementsByClassName('editBtn');
     let tdDelete = document.getElementsByClassName('deleteBtn');
 
-   if (localStorage.getItem("apiKey") !== null){
-      
-       apiKey = localStorage.getItem("apiKey");
-       
-       
-   }
+
+    if (localStorage.getItem("apiKey") !== null) {
+
+        apiKey = localStorage.getItem("apiKey");
+
+
+    }
 
 
 
@@ -66,35 +67,35 @@ window.onload = function () {
     })
 
     function addBooksToDB(titl, auth) {
-        if (apiKey === null){
+        if (apiKey === undefined || apiKey === null) {
             showErrorBox();
-            console.log('händer');
-        }
-        
-        title = titl;
-        author = auth;
-        //console.log(title);
+        } else {
+            title = titl;
+            author = auth;
+          
 
-        let addReq = new XMLHttpRequest;
+            let addReq = new XMLHttpRequest;
 
-        let url = 'https://www.forverkliga.se/JavaScript/api/crud.php?op=insert&key=' + apiKey + '&title=' + title + '&author=' + author;
+            let url = 'https://www.forverkliga.se/JavaScript/api/crud.php?op=insert&key=' + apiKey + '&title=' + title + '&author=' + author;
 
-        addReq.onreadystatechange = function () {
-            if (addReq.status == 200 && addReq.readyState == 4) {
-                let data = JSON.parse(addReq.responseText);
-                if (data.status == 'success') {
-                    error.style.display = 'none';
-                    succeed.style.display = 'block';
-                    succeed.innerHTML = `The books have succesfully been added!`;
-                    //console.log(data);
-                } else {
-                    addBooksToDB(title, author);
+            addReq.onreadystatechange = function () {
+                if (addReq.status == 200 && addReq.readyState == 4) {
+                    let data = JSON.parse(addReq.responseText);
+                    if (data.status == 'success') {
+                        error.style.display = 'none';
+                        succeed.style.display = 'block';
+                        succeed.innerHTML = `The books have succesfully been added!`;
+                  
+                    } else {
+                        addBooksToDB(title, author);
+                    }
                 }
             }
+            addReq.open('GET', url);
+            addReq.send();
         }
-        addReq.open('GET', url);
-        addReq.send();
-         
+
+
     }
 
     function getGoogleBooks() {
@@ -107,16 +108,16 @@ window.onload = function () {
             if (gReq.status == 200 && gReq.readyState == 4) {
                 let data = JSON.parse(gReq.responseText);
                 let bookList = data.items;
-                
+
                 for (let i = 0; i < 5; i++) {
-                    if (bookList[i].volumeInfo.hasOwnProperty('authors')){
-                    let title = bookList[i].volumeInfo.title;
-                    let author = bookList[i].volumeInfo.authors[0];
-                    addBooksToDB(title, author);
+                    if (bookList[i].volumeInfo.hasOwnProperty('authors')) {
+                        let title = bookList[i].volumeInfo.title;
+                        let author = bookList[i].volumeInfo.authors[0];
+                        addBooksToDB(title, author);
                     }
-                    
+
                 }
-            } 
+            }
         }
         gReq.open('GET', url);
         gReq.send();
@@ -127,53 +128,55 @@ window.onload = function () {
     viewLib.addEventListener('click', viewBooks);
 
     function viewBooks(e) {
-        if (apiKey === null){
+        if (apiKey === undefined || apiKey === null) {
             showErrorBox();
-        }
-        let url = 'https://www.forverkliga.se/JavaScript/api/crud.php?op=select&key=' + apiKey;
-        let viewReq = new XMLHttpRequest;
+        } else {
+            let url = 'https://www.forverkliga.se/JavaScript/api/crud.php?op=select&key=' + apiKey;
+            let viewReq = new XMLHttpRequest;
 
-        viewReq.onreadystatechange = function () {
+            viewReq.onreadystatechange = function () {
 
-            if (viewReq.readyState == 4 && viewReq.status == 200) {
-                let data = JSON.parse(viewReq.responseText);
-                if (data.status == 'success') {
-                    bookTable.style.display = 'table';
-                    tbody.innerHTML = '';
-                    for (let i = 0; i < data.data.length; i++) {
-                        let tRow = document.createElement('TR');
-                        tbody.appendChild(tRow);
-                        let html =
-                            `<td>${data.data[i].id}</td>
+                if (viewReq.readyState == 4 && viewReq.status == 200) {
+                    let data = JSON.parse(viewReq.responseText);
+                    if (data.status == 'success') {
+                        bookTable.style.display = 'table';
+                        tbody.innerHTML = '';
+                        for (let i = 0; i < data.data.length; i++) {
+                            let tRow = document.createElement('TR');
+                            tbody.appendChild(tRow);
+                            let html =
+                                `<td>${data.data[i].id}</td>
                     <td>${data.data[i].title}</td>
                     <td>${data.data[i].author}</td>
                     <td><span class="glyphicon glyphicon-edit editBtn" style="cursor: pointer"></span></td>
                     <td><span class="glyphicon glyphicon-trash deleteBtn" style="cursor: pointer"></span></td>`;
-                        tRow.innerHTML = html;
-                        tdEdit = tRow.querySelector("td:nth-child(4)");
-                        tdDelete = tRow.querySelector("td:nth-child(5)");
-                        
-                        tdDelete.addEventListener('click', deleteItem);
-                        tdEdit.addEventListener('click', function (ev) {
-                            clickCount++;
-                            editItem(ev, data);
-                        });
+                            tRow.innerHTML = html;
+                            tdEdit = tRow.querySelector("td:nth-child(4)");
+                            tdDelete = tRow.querySelector("td:nth-child(5)");
+
+                            tdDelete.addEventListener('click', deleteItem);
+                            tdEdit.addEventListener('click', function (ev) {
+                                clickCount++;
+                                editItem(ev, data);
+                            });
+                        }
+                    } else {
+                        viewBooks();
                     }
-                } else {
-                    viewBooks();
+
                 }
 
             }
-
+            viewReq.open('GET', url);
+            viewReq.send();
+            viewLib.innerText = "Hide books";
+            viewLib.removeEventListener('click', viewBooks);
+            viewLib.addEventListener('click', hide);
         }
-        viewReq.open('GET', url);
-        viewReq.send();
-        viewLib.innerText = "Hide books";
-        viewLib.removeEventListener('click', viewBooks);
-        viewLib.addEventListener('click', hide);
+
     }
-    
-    function hide(){
+
+    function hide() {
         bookTable.style.display = 'none';
         viewLib.removeEventListener('click', hide);
         viewLib.addEventListener('click', viewBooks);
@@ -181,7 +184,7 @@ window.onload = function () {
     }
 
     let errorBool = false;
-    
+
 
     function editItem(ev, data) {
         if (clickCount < 2) {
@@ -215,7 +218,7 @@ window.onload = function () {
                                 let resp = JSON.parse(modReq.responseText);
                                 if (resp.status == 'success') {
                                     editTitle.removeEventListener('blur', updateBook);
-                                editAuth2.removeEventListener('blur', updateBook);
+                                    editAuth2.removeEventListener('blur', updateBook);
                                     viewBooks();
                                     clickCount = 0;
                                 } else if (resp.status == 'error') {
@@ -224,7 +227,7 @@ window.onload = function () {
                                 }
 
 
-                            } 
+                            }
                         }
 
                     }
@@ -245,7 +248,7 @@ window.onload = function () {
                     updateBook();
                 }
             })
-            
+
             editTitle.addEventListener('blur', updateBook);
             editAuth2.addEventListener('blur', updateBook);
 
@@ -255,16 +258,17 @@ window.onload = function () {
 
     function showErrorBox() {
         errorBx.style.display = 'block';
-        if (apiKey === null){
-            let html = `You don't seem to have an API Key. <br>
+        let html;
+        if (apiKey === undefined || apiKey === null) {
+            html = `You don't seem to have an API Key. <br>
                                 Please request one and try again.
 <span class="top-right" id="closeBox">Close(X)</span>`;
         } else {
-            let html = `Something went wrong. <br>
+            html = `Something went wrong. <br>
                                 Please try again.
 <span class="top-right" id="closeBox">Close(X)</span>`;
         }
-        
+
         errorBx.innerHTML = html;
         let close = document.getElementById('closeBox');
         close.addEventListener('click', function (e) {
@@ -293,7 +297,7 @@ window.onload = function () {
                         errorBx.style.display = 'none';
                     })
                 }
-            } 
+            }
         }
         let url = `https://www.forverkliga.se/JavaScript/api/crud.php?op=delete&key=${apiKey}&id=${id}`;
         delReq.open('GET', url);
