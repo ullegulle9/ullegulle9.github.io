@@ -75,9 +75,9 @@ class App extends React.Component {
 		//console.log(ev.target);
 		let list = this.state.tracklist;
 		console.log(this.state.editObj);
+		let edit = this.state.edit;
 		
-		
-		if(this.state.edit){
+		if(edit){
 			let newList = [];
 			let key = this.state.editObj.key;
 			list.forEach(x => {
@@ -120,7 +120,7 @@ class App extends React.Component {
 	}
 	
 	
-	// Creates object when user presses a specific row
+	// Creates object when user clicks a specific row
 	listRow(ev){
 		let id = Number(ev.target.parentElement.id);
 		let list = this.state.tracklist;
