@@ -55,8 +55,6 @@ class App extends React.Component {
 	
 	
 	updateObj(ev){
-		console.log(ev.target);
-		
 		if (ev.target.placeholder === 'Låt'){
 			this.setState({
 				song: ev.target.value,
@@ -72,9 +70,7 @@ class App extends React.Component {
 	}
 	
 	addObj(ev){
-		//console.log(ev.target);
 		let list = this.state.tracklist;
-		console.log(this.state.editObj);
 		let edit = this.state.edit;
 		
 		if(edit){
@@ -103,7 +99,6 @@ class App extends React.Component {
 		} 
 		else {
 		let id = this.state.listID + 1;
-			console.log(id);
 			list.push({
 				song: this.state.song,
 				artist: this.state.artist,
@@ -114,9 +109,6 @@ class App extends React.Component {
 				tracklist: list
 				});
 		}
-		
-		
-		//console.log(this.state.tracklist);
 	}
 	
 	
@@ -127,11 +119,9 @@ class App extends React.Component {
 		let clickedObj = null;
 		list.forEach(x => {
 			if (x.key === id){
-				console.log(x);
 				clickedObj = x;
 			}
 		})
-		console.log(clickedObj);
 		this.setState({
 			song: clickedObj.song,
 			artist: clickedObj.artist,
@@ -143,12 +133,10 @@ class App extends React.Component {
 	
 	editRow(ev){
 		let id = Number(ev.target.parentElement.parentElement.id);
-		//console.log(ev.target.parentElement.parentElement);
 		let list = this.state.tracklist;
 		let clickedObj = null;
 		list.forEach(x => {
 			if (x.key === id){
-				console.log(x);
 				clickedObj = x;
 			}
 		})
@@ -214,7 +202,6 @@ class MyList extends React.Component {
 	render() {
 		let list = this.props.list;
 		let clickID = this.props.clickID;
-		console.log(clickID);
 		let elementList = list.map(x => {
 			if (x.key === clickID){
 				return <tr key={x.key} id={x.key}><td onClick={this.props.showRow}>{x.song}</td><td onClick={this.props.showRow}>{x.artist}</td>
