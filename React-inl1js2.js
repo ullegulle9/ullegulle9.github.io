@@ -1,17 +1,33 @@
-let inp = document.getElementById('input');
-let printDiv = document.getElementById('print');
+
 
 /////////////////////////// PART 1 /////////////////////////////////
 
 class Print extends React.Component {
+	constructor(props){
+		super(props);
+		this.state = {
+			inpVal: ''
+		}
+		this.handleInput = this.handleInput.bind(this);
+	}
     render() {
-        return ( <p>{inp.value}</p> );
+        return ( <div>
+				<input type="text" onKeyUp={this.handleInput} placeholder="Skriv här"></input>
+				<p>{this.state.inpVal}</p>
+			</div> );
     }
+	handleInput(ev){
+		this.setState({
+			inpVal: ev.target.value
+		});
+	}
 }
 
-inp.addEventListener('keyup', x => {
-    ReactDOM.render(<Print />, printDiv);       
-})       
+   
+ReactDOM.render(
+	<Print />,
+	document.getElementById('part1')
+);
 
 
 /////////////////////////// PART 2 /////////////////////////////////
@@ -71,6 +87,8 @@ class Form extends React.Component {
 				<select onChange={this.props.selectChange}>
 					<option value="+">+</option>
 					<option value="-">-</option>
+					<option value="x">x</option>
+					<option value="÷">÷</option>
 				</select>
         </div>
                 )
@@ -90,6 +108,12 @@ class PrintSum extends React.Component {
 		}
 		else if(i.sort === '-'){
 			sum = Number(i.num1) - Number(i.num2);
+		} 
+		else if(i.sort === 'x'){
+			sum = Number(i.num1) * Number(i.num2);
+		} 
+		else if(i.sort === '÷'){
+			sum = Number(i.num1) / Number(i.num2);
 		}
         	if (sum > 0){
 				return (
